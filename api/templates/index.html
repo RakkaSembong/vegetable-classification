@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Vegetable Classifier</title>
+</head>
+<body class="bg-green-100 font-sans leading-normal tracking-normal">
+
+<header class="bg-green-500 p-4 text-white text-center text-white">
+        <h1 class="text-3xl font-bold text-white">KLASIFIKASI JENIS SAYURAN</h1>
+    </header>
+
+<div class="mt-4 p-24 mx-48">
+    <div class="border-2 border-white rounded-lg p-12 bg-green-400 text-white">
+
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="image" id="image" accept="image/*" required>
+        <button class="border-2 p-2 bg-white text-green-800 rounded-xl" type="submit">Upload and Classify</button>
+    </form>
+    <div class="text-white" id="result"></div>
+
+    </div>
+
+</div>
+<main class="max-w-screen-xl mx-auto p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Bean.jpg" alt="Bean" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Bean</h2>
+                <p class="mt-1">Bean adalah jenis sayuran dari keluarga legum yang dikenal karena kandungan nutrisinya yang tinggi, termasuk protein, serat, vitamin, dan mineral. Konsumsi bean secara rutin dapat membantu pencernaan, mendukung kesehatan jantung, dan mengontrol gula darah.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Bitter_Gourd.jpg" alt="Bitter Gourd" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Bitter Gourd</h2>
+                <p class="mt-1">Bitter gourd, atau pare, adalah sayuran yang dikenal dengan rasa pahitnya yang khas dan sering digunakan dalam masakan Asia. Sayuran ini kaya akan vitamin C, zat besi, dan antioksidan, serta memiliki manfaat kesehatan seperti membantu mengontrol gula darah dan meningkatkan sistem kekebalan tubuh.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Bottle_Gourd.jpg" alt="Bottle Gourd" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Bottle Gourd</h2>
+                <p class="mt-1">Bottle gourd, atau labu air, adalah sayuran yang populer dalam masakan Asia dan dikenal karena teksturnya yang lembut dan kandungan airnya yang tinggi. Sayuran ini kaya akan vitamin C, vitamin B, dan serat, serta memiliki manfaat kesehatan seperti membantu pencernaan dan menjaga hidrasi tubuh.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Brinjal.jpg" alt="Brinjal" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Brinjal</h2>
+                <p class="mt-1">Brinjal, atau terong, adalah sayuran yang sering digunakan dalam berbagai masakan dan dikenal karena teksturnya yang lembut serta rasanya yang kaya. Sayuran ini kaya akan serat, vitamin B, dan antioksidan, serta memiliki manfaat kesehatan seperti membantu pencernaan dan mengurangi risiko penyakit jantung.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Broccoli.png" alt="Broccoli" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Broccoli</h2>
+                <p class="mt-1">Broccoli adalah sayuran hijau yang kaya akan vitamin C, vitamin K, dan serat, serta dikenal karena kandungan antioksidannya yang tinggi. Mengonsumsi broccoli secara rutin dapat membantu meningkatkan sistem kekebalan tubuh, mendukung kesehatan jantung, dan mengurangi risiko kanker.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Cabbage.jpg" alt="Cabbage" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Cabbage</h2>
+                <p class="mt-1">Cabbage, atau kubis, adalah sayuran cruciferous yang kaya akan vitamin C, vitamin K, dan serat, serta sering digunakan dalam berbagai masakan. Mengonsumsi kubis secara rutin dapat membantu pencernaan, meningkatkan sistem kekebalan tubuh, dan mendukung kesehatan jantung.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Capsicum1.jpg" alt="Capsicum" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Capsicum</h2>
+                <p class="mt-1">Capsicum, atau paprika, adalah sayuran yang tersedia dalam berbagai warna seperti merah, kuning, dan hijau, serta kaya akan vitamin C, vitamin A, dan antioksidan. Mengonsumsi capsicum dapat membantu meningkatkan sistem kekebalan tubuh, mendukung kesehatan mata, dan mengurangi peradangan.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Carrot1.jpg" alt="Carrot" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Carrot</h2>
+                <p class="mt-1">Wortel adalah sayuran berwarna oranye yang kaya akan beta-karoten, vitamin K, dan serat, serta sering dijadikan sebagai camilan sehat atau bahan dalam berbagai masakan. Konsumsi wortel secara rutin dapat membantu menjaga kesehatan mata, mendukung sistem kekebalan tubuh, dan mempromosikan kesehatan kulit.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Cauliflower.jpg" alt="Cauliflower" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Cauliflower</h2>
+                <p class="mt-1">Cauliflower, atau kembang kol, adalah sayuran yang kaya akan vitamin C, vitamin K, dan serat, serta sering digunakan sebagai pengganti nasi atau tepung dalam diet rendah karbohidrat. Konsumsi cauliflower dapat membantu dalam menjaga kesehatan tulang, meningkatkan sistem pencernaan, dan memberikan nutrisi yang penting bagi tubuh.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Cucumber.jpg" alt="Cucumber" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Cucumber</h2>
+                <p class="mt-1">Timun, atau cucumber, adalah sayuran dengan kandungan air tinggi, rendah kalori, dan mengandung vitamin K, serta sering digunakan dalam salad atau sebagai camilan segar. Konsumsi timun dapat membantu menjaga hidrasi tubuh, mendukung fungsi pencernaan, dan memberikan rasa segar pada makanan.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Papaya.jpg" alt="Papaya" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Papaya</h2>
+                <p class="mt-1">Papaya, meskipun umumnya dikenal sebagai buah tropis, juga dapat dianggap sebagai sayuran karena banyak dimanfaatkan dalam masakan. Dengan kandungan enzim papainnya, papaya sering digunakan sebagai bumbu dalam masakan, memberikan rasa segar dan aroma yang unik.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Potato.jpg" alt="Potato" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Potato</h2>
+                <p class="mt-1">Kentang adalah sayuran yang kaya akan karbohidrat, serat, dan vitamin C, serta sering diolah menjadi berbagai hidangan seperti kentang goreng, kentang rebus, atau kentang panggang. Konsumsi kentang dengan kulitnya dapat memberikan tambahan serat dan nutrisi yang bermanfaat bagi kesehatan pencernaan.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Pumpkin.jpg" alt="Pumpkin" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Pumpkin</h2>
+                <p class="mt-1">Walau sering dianggap sebagai buah, labu juga bisa dianggap sebagai sayuran karena sering digunakan dalam masakan gurih dan manis. Labu kaya akan vitamin A, serat, dan antioksidan, serta sering dijadikan bahan dalam berbagai hidangan seperti sup, kue, atau camilan panggang.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Radish.jpg" alt="Radish" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Radish</h2>
+                <p class="mt-1">Radish, atau lobak, adalah sayuran yang memiliki rasa pedas dan krispi, serta kaya akan serat, vitamin C, dan kalium. Lobak sering digunakan dalam salad atau dimakan mentah sebagai camilan sehat, serta dapat memberikan tambahan tekstur dan rasa yang segar pada hidangan.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="static/Asset/Tomato.jpg" alt="Tomato" class="w-full h-64 rounded-lg">
+                <h2 class="mt-2 text-xl font-semibold">Tomato</h2>
+                <p class="mt-1">Tomat adalah buah yang sering dianggap sebagai sayuran, kaya akan vitamin C, vitamin K, dan likopen, serta sering digunakan dalam masakan atau dimakan mentah sebagai camilan sehat. Mengonsumsi tomat secara rutin dapat membantu dalam menjaga kesehatan jantung, meningkatkan sistem kekebalan tubuh, dan memberikan antioksidan yang bermanfaat bagi tubuh.</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('upload-form').onsubmit = async function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            const imageFile = document.getElementById('image').files[0];
+            formData.append('image', imageFile);
+
+            const response = await fetch('/vegetable', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            document.getElementById('result').innerHTML = '<p class="text-white">Prediction: ' + result.prediction + '</p>';
+
+        }
+    </script>
+</body>
+</html>
